@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  neo4j:
+    image: neo4j:3.5.6
+    restart: always
+    ports:
+      - 7474:7474
+      - 7687:7687
+      - 7473:7473
+    volumes:
+      - /work/database/neo4j/data:/data
+      - /work/database/neo4j/logs:/logs
+      - /work/database/neo4j/plugins:/plugins
+      - /work/database/neo4j/import:/import
+    environment:
+      NEO4J_dbms_security_procedures_unrestricted: algo.*, apoc.*
+      NEO4J_apoc_import_file_enabled: "true"
+      NEO4J_dbms_memory_pagecache_size: "8G"
+      NEO4J_dbms_memory_heap_initial__size: "8G"
+      NEO4J_dbms_memory_heap_max__size: "8G"

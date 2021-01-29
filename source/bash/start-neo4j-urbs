@@ -1,0 +1,13 @@
+docker run --name transport-graph-datascience \
+    --publish=7474:7474 --publish=7687:7687      \
+    --volume=$HOME/docker/transport-graph-datascience/neo4j/data:/data       \
+    --volume=$HOME/docker/transport-graph-datascience/neo4j/logs:/logs       \
+    --volume=$HOME/docker/transport-graph-datascience/neo4j/conf:/conf       \
+    --volume=$HOME/docker/transport-graph-datascience/neo4j/plugins:/plugins \
+    --volume=$HOME/docker/transport-graph-datascience/neo4j/import:/import  \
+    -e NEO4J_dbms_security_procedures_unrestricted=apoc.\\\*,algo.\\\* \
+    -e NEO4J_apoc_import_file_enabled=true \
+    --env=NEO4J_dbms_memory_pagecache_size=4G \
+    --env=NEO4J_dbms_memory_heap_initial__size=2G \
+    --env=NEO4J_dbms_memory_heap_max__size=10G \
+    neo4j:3.5.5

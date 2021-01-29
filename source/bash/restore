@@ -1,0 +1,12 @@
+docker rm -f neo4j3.5-graph-model
+
+docker run \
+--name neo4j-load \
+--volume=$HOME/docker/urbs-graph-model/neo4j/data:/data       \
+--volume=$HOME/docker/urbs-graph-model/neo4j/logs:/logs       \
+--volume=$HOME/docker/urbs-graph-model/neo4j/conf:/conf       \
+--volume=$HOME/docker/urbs-graph-model/neo4j/plugins:/plugins \
+--volume=$HOME/docker/urbs-graph-model/neo4j/import:/import  \
+neo4j:3.5 bin/neo4j-admin load --database=graph.db --from=/import/graph.db.dump --force
+
+docker rm -f neo4j-load
