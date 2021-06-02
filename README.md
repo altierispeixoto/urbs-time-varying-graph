@@ -71,10 +71,5 @@ https://pytorch-geometric.readthedocs.io/en/latest/#
 
 https://github.com/thampiman/reverse-geocoder
 
-**AIRFLOW - DAG EXECUTION ORDER**  
-1 - download_files  
-2 - load-raw-to-processed  
-3 - prepare-data-to-neo4j  
-
 ---
 https://dillinger.io/
